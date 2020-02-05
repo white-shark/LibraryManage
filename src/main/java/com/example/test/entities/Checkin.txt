@@ -1,0 +1,81 @@
+package com.example.test.entities;
+
+import javax.persistence.*;
+import java.util.Calendar;
+
+@Entity     //告诉JPA这是一个实体类（和数据表映射类）
+@Table(name = "tb_checkin") //@Table来指定和哪个数据表对应
+public class Checkin {
+    @Id     //主键
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //自增主键
+    private Integer id;
+    @Column         //数据表中的列
+    private String stuID;
+    @Column         //数据表中的列
+    private String name;
+    @Column         //数据表中的列
+    private Calendar checktime;
+
+    public Integer getId() {
+
+        return id;
+    }
+
+    public String getStuID() {
+
+        return stuID;
+    }
+
+    public String getName() {
+
+        return name;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    public Calendar getChecktime() {
+
+        return checktime;
+    }
+
+    public void setId(Integer id) {
+
+        this.id = id;
+    }
+
+    public void setStuID(String stuID) {
+
+        this.stuID = stuID;
+    }
+
+    public void setName(String name) {
+
+        this.name = name;
+    }
+
+    public void setChecktime(Calendar checktime) {
+
+        this.checktime = checktime;
+    }
+
+    public Checkin (Integer id,String name,String stuID,Calendar checktime){
+
+        super();
+        this.id = id;
+        this.name = name;
+        this.stuID = stuID;
+        this.checktime = checktime;
+
+    }
+    public  Checkin(){
+
+    }
+
+    public String toString(){
+        return "Checktime{" +
+                "id=" + id +
+                ", Name='" + name + '\'' +
+                ", stuID=" + stuID +
+                ",checktime"+checktime+
+                '}';
+    }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Dashboard Template for Bootstrap</title>
+		<!-- Bootstrap core CSS -->
+		<link href="/asserts/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="/asserts/css/dashboard.css" rel="stylesheet">
+		<style type="text/css">
+			/* Chart.js */
+			
+			@-webkit-keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			@keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.chartjs-render-monitor {
+				-webkit-animation: chartjs-render-animation 0.001s;
+				animation: chartjs-render-animation 0.001s;
+			}
+		</style>
+	</head>
+
+	<body>
+	<!--引入抽取了顶部栏topbar-->
+
+	<div th:replace="bar::topbar"></div>
+
+	<div class="container-fluid">
+		<div class="row">
+
+			<!-- 引入侧边栏 -->
+			<div th:replace="bar::#sidebar(activeUri='emps')"></div>
+
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+					<h2>信息删除确认</h2>
+					<form th:action="@{/empdel}" method="post">
+					<input type="hidden" name="_method" value="put" />
+					<input type="hidden" name="id" th:value="${emp.id}" />
+
+					<div class="form-row">					
+						<div class="form-group col-md-6">
+							<label for="Name">Name</label>
+							<input name="Name" type="text" class="form-control" id="Name" placeholder="Name" th:placeholder="${emp.name}" th:value="${emp.name}">
+						</div>
+					</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="Phone">Phone</label>
+								<input name="Phone" type="text" class="form-control" id="Phone" placeholder="Phone" th:placeholder="${emp.phone}" th:value="${emp.phone}" >
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="stuID">stuID</label>
+								<input name="stuID" type="text" class="form-control" id="stuID" placeholder="stuID" th:placeholder="${emp.stuID}" th:value="${emp.stuID}" >
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-4">
+								<label for="inputGender">Gender</label>
+								<select id="inputState" name="Gender" class="form-control">
+									<option value="1" selected th:selected="${emp.gender}==1">男</option>
+									<option value="0" th:selected="${emp.gender}==0">女</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="classID">classID</label>
+								<input name="classID" type="text" class="form-control" id="classID" placeholder="classID" th:placeholder="${emp.classID}" th:value="${emp.classID}" >
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">删除</button>
+					</form>
+				</main>
+			</div>
+
+		</div>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" src="/asserts/js/jquery-3.2.1.slim.min.js"></script>
+		<script type="text/javascript" src="/asserts/js/popper.min.js"></script>
+		<script type="text/javascript" src="/asserts/js/bootstrap.min.js"></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" src="/asserts/js/feather.min.js"></script>
+		<script>
+			feather.replace()
+		</script>
+
+	</body>
+
+</html>
